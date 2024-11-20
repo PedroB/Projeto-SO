@@ -9,6 +9,7 @@
 #include "operations.h"
 
 //mudança numero 2
+//testar mundança numero 3
   
 int main(int argc,char *argv[]) {
   struct dirent *pDirent;
