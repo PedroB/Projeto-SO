@@ -9,6 +9,7 @@
 static struct HashTable* kvs_table = NULL;
 
 
+
 /// Calculates a timespec from a delay in milliseconds.
 /// @param delay_ms Delay in milliseconds.
 /// @return Timespec with the given delay.

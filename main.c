@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <string.h>
+#include <fcntl.h>
+
 
 #include "constants.h"
 #include "parser.h"
@@ -10,6 +13,11 @@
 
 
 void *readFilesLines(void *args){ 
+  char *filename = (char *)args;
+  int file_fd = open(filename, O_RDONLY); 
+  if (file_fd < 0) {
+        perror("Error opening file");
+    }
 
   while (1) {
     char keys[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
@@ -117,6 +125,11 @@ int main(int argc,char *argv[]) {
   DIR *dir;
   dir = opendir(argv[1]);
 
+  if (argc != 2) {
+        fprintf(stderr, "Usage: %s <directory>\n", argv[0]);
+        return 1;
+    }
+
   if(dir == NULL){
     printf("Cannot open filename '%s'\n",argv[1]);
     return 1;
@@ -127,7 +140,7 @@ int main(int argc,char *argv[]) {
     return 1;
   }
 
-  while(pDirent = readdir(dir) != NULL){
+  while((pDirent = readdir(dir)) != NULL){
     char *ptr_to_dot = strrchr(pDirent->d_name, '.');
     if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".job") != 0)
     {
