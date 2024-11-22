@@ -120,10 +120,17 @@ void *readFilesLines(void *args){
   }
 }
 
+int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
+  strcpy(out_path, in_path);
+  strcpy(strrchr(out_path,'.'),".out");
+  return 1;
+}
+
 int main(int argc,char *argv[]) {
   struct dirent *pDirent;
+  char* dir_name = argv[1];
   DIR *dir;
-  dir = opendir(argv[1]);
+  dir = opendir(dir_name);
 
   if (argc != 2) {
         fprintf(stderr, "Usage: %s <directory>\n", argv[0]);
@@ -141,10 +148,6 @@ int main(int argc,char *argv[]) {
   }
 
   while((pDirent = readdir(dir)) != NULL){
-    char *ptr_to_dot = strrchr(pDirent->d_name, '.');
-    if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".job") != 0)
-    {
-      continue;
-    }
+    
   }
 }
