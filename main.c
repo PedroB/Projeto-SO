@@ -142,6 +142,7 @@ int main(int argc,char *argv[]) {
   char in_path[MAX_JOB_FILE_NAME_SIZE],out_path[MAX_JOB_FILE_NAME_SIZE];
   DIR *dir;
   dir = opendir(dir_name);
+  FILE *in_file, *out_file;
 
   if (argc != 2) {
         fprintf(stderr, "Usage: %s <directory>\n", argv[0]);
@@ -162,6 +163,13 @@ int main(int argc,char *argv[]) {
     if(gen_path(dir_name,entry,in_path,out_path)){
       continue;
     }
+    in_file = fopen(in_path, "r");
+    out_file = fopen(out_path,"w");
+    char line[1024];
+        while (fgets(line, sizeof(line), in_file)) {
+          fprintf(out_file, "Processed: %s", line);
+      }
+
 
 
   }
