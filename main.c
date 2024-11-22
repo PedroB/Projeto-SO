@@ -126,6 +126,8 @@ int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
   return 1;
 }
 
+/* mundannnnnnnnnnça*/
+
 int main(int argc,char *argv[]) {
   struct dirent *pDirent;
   char* dir_name = argv[1];
