@@ -21,8 +21,20 @@ kvs: main.c constants.h operations.o parser.o kvs.o
 run: kvs
 	@./kvs
 
+# Regra para rodar os testes
+run_tests: all
+	@echo "Executando testes..."
+	@python3 generate_tests.py  # Gera os arquivos .job e esperados
+	@for job in tests/*.job; do \
+		echo "Testando $$job..."; \
+		./kvs < $$job > tests/$$(basename $$job .job).out; \
+		diff tests/$$(basename $$job .job).out tests/expected/$$(basename $$job .job).out || echo "Erro no teste $$job!"; \
+	done
+	@echo "Todos os testes passaram!"
+
+# Limpeza de arquivos gerados
 clean:
-	rm -f *.o kvs
+	rm -f *.o kvs tests/*.out
 
 format:
 	@which clang-format >/dev/null 2>&1 || echo "Please install clang-format to run this command"
