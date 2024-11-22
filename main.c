@@ -122,16 +122,24 @@ void *readFilesLines(void *args){
 }
 
 int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
+  while(1){
+  char *ptr_to_dot = strrchr(entry->d_name, '.');
+    if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".jobs") != 0)
+    {
+      continue;
+    }
   strcpy(out_path, in_path);
   strcpy(strrchr(out_path,'.'),".out");
+  }
   return 1;
 }
 
 /* mundannnnnnnnnnça*/
 
 int main(int argc,char *argv[]) {
-  struct dirent *pDirent;
+  struct dirent *entry;
   char* dir_name = argv[1];
+  char in_path[MAX_JOB_FILE_NAME_SIZE],out_path[MAX_JOB_FILE_NAME_SIZE];
   DIR *dir;
   dir = opendir(dir_name);
 
@@ -141,7 +149,7 @@ int main(int argc,char *argv[]) {
     }
 
   if(dir == NULL){
-    printf("Cannot open filename '%s'\n",argv[1]);
+    printf("Cannot open filename '%s'\n",dir_name);
     return 1;
   }
 
@@ -150,7 +158,14 @@ int main(int argc,char *argv[]) {
     return 1;
   }
 
-  while((pDirent = readdir(dir)) != NULL){
-    
+  while((entry = readdir(dir)) != NULL){
+    if(gen_path(dir_name,entry,in_path,out_path)){
+      continue;
+    }
+
+
   }
+
+  closedir(dir);
+  return 0;
 }
