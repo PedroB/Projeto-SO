@@ -150,6 +150,6 @@ int main(int argc,char *argv[]) {
   }
 
   while((pDirent = readdir(dir)) != NULL){
-    gen_path
+    gen_pathfscds
   }
 }
