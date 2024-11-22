@@ -1,0 +1,2 @@
+DELETE [key1]
+        READ [key1]
