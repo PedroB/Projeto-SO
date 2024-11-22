@@ -11,6 +11,7 @@
 #include "parser.h"
 #include "operations.h"
 
+//MUDEI UDE MADF JASDÇLF JASLKÇD FASLK JDF
 
 void *readFilesLines(void *args){ 
   char *filename = (char *)args;
