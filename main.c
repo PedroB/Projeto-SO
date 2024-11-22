@@ -3,17 +3,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
-#include <string.h>
 #include <fcntl.h>
-
+#include <string.h>
 
 #include "constants.h"
 #include "parser.h"
 #include "operations.h"
 
-//MUDEI UDE MADF JASDÇLF JASLKÇD FASLK JDF
 
-void *readFilesLines(void *args){ 
+  void *readFilesLines(void *args){ 
   char *filename = (char *)args;
   int file_fd = open(filename, O_RDONLY); 
   if (file_fd < 0) {
@@ -100,7 +98,7 @@ void *readFilesLines(void *args){
       case CMD_HELP:
         printf( 
             "Available commands:\n"
-            "  WRITE [(key,value),(key2,value2),...]\n"
+            "  WRITE [(key,value)(key2,value2),...]\n"
             "  READ [key,key2,...]\n"
             "  DELETE [key,key2,...]\n"
             "  SHOW\n"
@@ -117,14 +115,16 @@ void *readFilesLines(void *args){
       case EOC:
         kvs_terminate();
         return 0;
-    }
+    
   }
-}
+  }
+  }
 
-int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
+  int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
+   (void)dir_name; 
   while(1){
   char *ptr_to_dot = strrchr(entry->d_name, '.');
-    if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".jobs") != 0)
+    if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".job") != 0)
     {
       continue;
     }
@@ -134,15 +134,13 @@ int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
   return 1;
 }
 
-/* mundannnnnnnnnnça*/
-
-int main(int argc,char *argv[]) {
+  int main(int argc,char *argv[]) {
   struct dirent *entry;
   char* dir_name = argv[1];
   char in_path[MAX_JOB_FILE_NAME_SIZE],out_path[MAX_JOB_FILE_NAME_SIZE];
   DIR *dir;
   dir = opendir(dir_name);
-  FILE *in_file, *out_file;
+  
 
   if (argc != 2) {
         fprintf(stderr, "Usage: %s <directory>\n", argv[0]);
@@ -154,21 +152,17 @@ int main(int argc,char *argv[]) {
     return 1;
   }
 
+
   if (kvs_init()) {
     fprintf(stderr, "Failed to initialize KVS\n");
     return 1;
   }
 
+
   while((entry = readdir(dir)) != NULL){
     if(gen_path(dir_name,entry,in_path,out_path)){
       continue;
     }
-    in_file = fopen(in_path, "r");
-    out_file = fopen(out_path,"w");
-    char line[1024];
-        while (fgets(line, sizeof(line), in_file)) {
-          fprintf(out_file, "Processed: %s", line);
-      }
 
 
 

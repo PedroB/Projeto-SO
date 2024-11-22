@@ -1,3 +1,0 @@
-WRITE [(key1,value1)]
-        READ [key1]
-        SHOW
