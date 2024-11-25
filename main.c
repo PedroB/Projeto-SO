@@ -43,7 +43,8 @@ struct ThreadArgs {
     fflush(stdout);
        printf("entrou while\n");
 
-
+    int c = get_next(fd);
+    printf("int next fd = %d", c);
     switch (get_next(fd)) {
       case CMD_WRITE:
         puts("entrou no write");
