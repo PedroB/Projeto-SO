@@ -84,9 +84,17 @@ static void cleanup(int fd) {
 
 enum Command get_next(int fd) {
   char buf[16];
-  if (read(fd, buf, 1) != 1) {
-    return EOC;
-  }
+  // if (read(fd, buf, 1) != 1) {
+  //   return EOC;
+  // }
+      ssize_t bytes_read = read(fd, buf, 1);
+
+
+  if (bytes_read == 0) {
+        // Explicitly detect EOF
+        return EOC;
+    }
+
 
   switch (buf[0]) {
     case 'W':

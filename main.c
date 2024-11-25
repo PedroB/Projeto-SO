@@ -45,7 +45,10 @@ struct ThreadArgs {
 
     int c = get_next(fd);
     printf("int next fd = %d", c);
-    switch (get_next(fd)) {
+
+
+
+    switch (c) {
       case CMD_WRITE:
         puts("entrou no write");
         num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
@@ -136,9 +139,12 @@ struct ThreadArgs {
         break;
         
       case CMD_EMPTY:
+      puts("entrou no empty");
         break;
+        
 
       case EOC:
+      puts("ENTROU EOC");
         kvs_terminate();
         return 0;
     
