@@ -11,13 +11,20 @@
 #include "operations.h"
 
 
-  void *readFilesLines(void *args){ 
-  char *filename = (char *)args;
-  int file_fd = open(filename, O_RDONLY); 
-  if (file_fd < 0) {
-        perror("Error opening file");
-    }
+struct ThreadArgs {
+    char file[BUFFER_SIZE];
+    int thread_id;
+    int BARRIER_ATIVO;
+};
 
+
+  void *readFilesLines(void *args){ 
+  struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
+  int BARRIER = threadArgs->BARRIER_ATIVO;
+  int fd;
+  if (BARRIER == 0){
+      fd = open(threadArgs->file, O_RDONLY);
+    }
   while (1) {
     char keys[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
     char values[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
@@ -27,9 +34,9 @@
     printf("> ");
     fflush(stdout);
 
-    switch (get_next(STDIN_FILENO)) {
+    switch (get_next(fd)) {
       case CMD_WRITE:
-        num_pairs = parse_write(STDIN_FILENO, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
+        num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
           continue;
@@ -42,7 +49,7 @@
         break;
 
       case CMD_READ:
-        num_pairs = parse_read_delete(STDIN_FILENO, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
+        num_pairs = parse_read_delete(fd, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
 
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -55,7 +62,7 @@
         break;
 
       case CMD_DELETE:
-        num_pairs = parse_read_delete(STDIN_FILENO, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
+        num_pairs = parse_read_delete(fd, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
 
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -73,7 +80,7 @@
         break;
 
       case CMD_WAIT:
-        if (parse_wait(STDIN_FILENO, &delay, NULL) == -1) {
+        if (parse_wait(fd, &delay, NULL) == -1) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
           continue;
         }
