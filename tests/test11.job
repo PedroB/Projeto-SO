@@ -1,0 +1,4 @@
+WRITE [(key1,value1)]
+        BACKUP
+        WRITE [(key2,value2)]
+        SHOW

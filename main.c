@@ -11,6 +11,8 @@
 #include "operations.h"
 
 
+int counter_files_iterated = 0;
+
 struct ThreadArgs {
     char file[BUFFER_SIZE];
     int thread_id;
@@ -20,11 +22,17 @@ struct ThreadArgs {
 
   void *readFilesLines(void *args){ 
   struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
-  int BARRIER = threadArgs->BARRIER_ATIVO;
+  // int BARRIER = threadArgs->BARRIER_ATIVO;
   int fd;
-  if (BARRIER == 0){
+   printf("entrou readfileslines\n");
+
+ 
+    puts("entrou no if");
       fd = open(threadArgs->file, O_RDONLY);
-    }
+
+  printf("file descr: %d", fd);
+
+             
   while (1) {
     char keys[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
     char values[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
@@ -33,9 +41,12 @@ struct ThreadArgs {
 
     printf("> ");
     fflush(stdout);
+       printf("entrou while\n");
+
 
     switch (get_next(fd)) {
       case CMD_WRITE:
+        puts("entrou no write");
         num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -49,6 +60,8 @@ struct ThreadArgs {
         break;
 
       case CMD_READ:
+               printf("entrou READ\n");
+
         num_pairs = parse_read_delete(fd, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
 
         if (num_pairs == 0) {
@@ -62,6 +75,8 @@ struct ThreadArgs {
         break;
 
       case CMD_DELETE:
+               printf("entrou DELTE\n");
+
         num_pairs = parse_read_delete(fd, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
 
         if (num_pairs == 0) {
@@ -75,11 +90,14 @@ struct ThreadArgs {
         break;
 
       case CMD_SHOW:
+         printf("entrou SHOW\n");
 
         kvs_show();
         break;
 
       case CMD_WAIT:
+         printf("entrou WAIT\n");
+
         if (parse_wait(fd, &delay, NULL) == -1) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
           continue;
@@ -127,19 +145,49 @@ struct ThreadArgs {
   }
   }
 
-  int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
-   (void)dir_name; 
-  while(1){
-  char *ptr_to_dot = strrchr(entry->d_name, '.');
-    if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".job") != 0)
-    {
-      continue;
+//   int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
+//    (void)dir_name; 
+
+//   char *ptr_to_dot = strrchr(entry->d_name, '.');
+//     if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".job") != 0)
+//     {
+//       /* açdkfa sçlkjk*/
+//     }
+//   strcpy(out_path, in_path);
+//   strcpy(strrchr(out_path,'.'),".out");
+  
+//   return 1;
+// }
+
+
+int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path) {
+    // (void)dir_name;
+
+
+    char *ptr_to_dot = strrchr(entry->d_name, '.');
+    if (strcmp(ptr_to_dot, ".job") == 0) {
+          counter_files_iterated += 1;
+
+          printf("ENTROU NUM .job DA DIRETORIA: %d\n", counter_files_iterated);
+
+        strcpy(out_path, in_path);
+        
+        // Find the last dot in the path
+        char *last_dot = strrchr(out_path, '.');
+        
+        if (last_dot != NULL) {
+            strcpy(last_dot, ".out");  // Replace the extension with ".out"
+        } else {
+            // Handle the case where no dot is found (this might need to be customized for your needs)
+            strcat(out_path, ".out");  // Append ".out" at the end of the string
+        }
+        readFilesLines(dir_name);
     }
-  strcpy(out_path, in_path);
-  strcpy(strrchr(out_path,'.'),".out");
-  }
-  return 1;
+
+    return 1;
 }
+
+
 
   int main(int argc,char *argv[]) {
   struct dirent *entry;
@@ -170,6 +218,9 @@ struct ThreadArgs {
     if(gen_path(dir_name,entry,in_path,out_path)){
       continue;
     }
+
+    // readFilesLines(dir_name); 
+
 
 
 
