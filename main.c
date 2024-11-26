@@ -22,17 +22,12 @@ struct ThreadArgs {
 
   void *readFilesLines(void *args){ 
   struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
-  // int BARRIER = threadArgs->BARRIER_ATIVO;
-  int fd;
-   printf("entrou readfileslines\n");
-
- 
-    puts("entrou no if");
+  int BARRIER = threadArgs->BARRIER_ATIVO;
+    int fd = 0;
+    if (BARRIER == 0){
       fd = open(threadArgs->file, O_RDONLY);
-
-  printf("file descr: %d", fd);
-
-             
+    }
+  
   while (1) {
     char keys[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
     char values[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
@@ -41,14 +36,7 @@ struct ThreadArgs {
 
     printf("> ");
     fflush(stdout);
-       printf("entrou while\n");
-
-    int c = get_next(fd);
-    printf("int next fd = %d", c);
-
-
-
-    switch (c) {
+    switch (get_next(fd)) {
       case CMD_WRITE:
         puts("entrou no write");
         num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
@@ -169,6 +157,9 @@ struct ThreadArgs {
 
 int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path) {
     // (void)dir_name;
+     if (!dir_name || !entry || !in_path || !out_path) {
+        return 1; // Error
+    }
 
 
     char *ptr_to_dot = strrchr(entry->d_name, '.');
