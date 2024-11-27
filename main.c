@@ -11,8 +11,6 @@
 #include "operations.h"
 
 
-int counter_files_iterated = 0;
-
 struct ThreadArgs {
     char file[BUFFER_SIZE];
     int thread_id;
@@ -38,7 +36,6 @@ struct ThreadArgs {
     fflush(stdout);
     switch (get_next(fd)) {
       case CMD_WRITE:
-        puts("entrou no write");
         num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -52,7 +49,6 @@ struct ThreadArgs {
         break;
 
       case CMD_READ:
-               printf("entrou READ\n");
 
         num_pairs = parse_read_delete(fd, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
 
@@ -67,7 +63,6 @@ struct ThreadArgs {
         break;
 
       case CMD_DELETE:
-               printf("entrou DELTE\n");
 
         num_pairs = parse_read_delete(fd, keys, MAX_WRITE_SIZE, MAX_STRING_SIZE);
 
@@ -82,13 +77,11 @@ struct ThreadArgs {
         break;
 
       case CMD_SHOW:
-         printf("entrou SHOW\n");
 
         kvs_show();
         break;
 
       case CMD_WAIT:
-         printf("entrou WAIT\n");
 
         if (parse_wait(fd, &delay, NULL) == -1) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -127,12 +120,10 @@ struct ThreadArgs {
         break;
         
       case CMD_EMPTY:
-      puts("entrou no empty");
         break;
         
 
       case EOC:
-      puts("ENTROU EOC");
         kvs_terminate();
         return 0;
     
@@ -140,33 +131,16 @@ struct ThreadArgs {
   }
   }
 
-//   int gen_path(char* dir_name,struct dirent* entry,char * in_path,char* out_path){
-//    (void)dir_name; 
-
-//   char *ptr_to_dot = strrchr(entry->d_name, '.');
-//     if (ptr_to_dot == NULL || strcmp(ptr_to_dot, ".job") != 0)
-//     {
-//       /* açdkfa sçlkjk*/
-//     }
-//   strcpy(out_path, in_path);
-//   strcpy(strrchr(out_path,'.'),".out");
-  
-//   return 1;
-// }
 
 
 int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path) {
-    // (void)dir_name;
      if (!dir_name || !entry || !in_path || !out_path) {
-        return 1; // Error
+        return 1; 
     }
 
 
     char *ptr_to_dot = strrchr(entry->d_name, '.');
     if (strcmp(ptr_to_dot, ".job") == 0) {
-          counter_files_iterated += 1;
-
-          printf("ENTROU NUM .job DA DIRETORIA: %d\n", counter_files_iterated);
 
         strcpy(out_path, in_path);
         
