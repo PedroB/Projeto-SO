@@ -1,2 +1,0 @@
-WAIT 1000
-        WRITE [(key1,value1)]

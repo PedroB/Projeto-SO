@@ -19,13 +19,26 @@ struct ThreadArgs {
 
 
   void *readFilesLines(void *args){ 
-  struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
-  int BARRIER = threadArgs->BARRIER_ATIVO;
-    int fd = 0;
-    if (BARRIER == 0){
-      fd = open(threadArgs->file, O_RDONLY);
-    }
+  // struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
+  // int BARRIER = threadArgs->BARRIER_ATIVO;
+  //   int fd = 0;
+  //   if (BARRIER == 0){
+  //     fd = open(threadArgs->file, O_RDONLY);
+  //   }
   
+
+  /* replaced by this*/
+
+  // int BARRIER = threadArgs->BARRIER_ATIVO;
+    int fd = 0;
+    // if (BARRIER == 0){
+      fd = open(args, O_RDONLY);
+
+    /*-------------------*/
+
+
+
+
   while (1) {
     char keys[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
     char values[MAX_WRITE_SIZE][MAX_STRING_SIZE] = {0};
@@ -36,6 +49,7 @@ struct ThreadArgs {
     fflush(stdout);
     switch (get_next(fd)) {
       case CMD_WRITE:
+      puts("entrouuuuuu write");
         num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -102,6 +116,7 @@ struct ThreadArgs {
         break;
 
       case CMD_INVALID:
+      puts("entrou invalidddd");
         fprintf(stderr, "Invalid command. See HELP for usage\n");
         break;
 
@@ -132,7 +147,9 @@ struct ThreadArgs {
   }
 
 
+/* whie (readdir)-> genpath(buscar o file da diretoria) (coloca o output do readfileslines num .out)*/
 
+/* directory -> ver o file -> output fica num novo .out*/
 int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path) {
      if (!dir_name || !entry || !in_path || !out_path) {
         return 1; 
