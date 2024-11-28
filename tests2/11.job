@@ -1,0 +1,10 @@
+WRITE [(h3,85)]
+READ [h3]
+WRITE [(w3,19)(j8,78)(e1,36)(w0,38)]
+READ [e1]
+WRITE [(p1,41)(u0,11)]
+WRITE [(l3,42)(r3,64)(i0,81)]
+READ [l3]
+DELETE [p1]
+WAIT 3000
+WRITE [(t4,17)(y1,66)(t0,0)(m5,96)(l0,56)]

@@ -1,0 +1,31 @@
+WRITE [(t4,49)(g2,81)(f3,100)(b0,63)]
+WRITE [(k2,77)(l0,11)(u0,72)(a0,90)]
+DELETE [a0,l0]
+DELETE [g2,f3,k2,u0]
+DELETE [t4,b0]
+WRITE [(w4,98)(g7,85)(r0,56)(v9,86)]
+WRITE [(m6,34)(j8,74)]
+WRITE [(o1,29)(f3,67)(h7,2)(v0,52)]
+BACKUP
+READ [g7]
+DELETE [v9,w4]
+WRITE [(l5,73)(u2,25)(o0,24)(r3,85)]
+READ [u2]
+DELETE [l5,g7,h7,u2]
+WRITE [(o4,80)]
+WRITE [(x5,5)(a4,42)(f2,56)(j2,46)(q7,94)]
+DELETE [o1,m6,r3,f3]
+WAIT 1000
+WRITE [(e6,42)]
+WRITE [(j1,95)(v4,14)(n5,89)(s9,75)(w9,1)]
+WRITE [(z6,82)(g1,30)(l5,100)(r3,61)]
+WRITE [(e7,13)(f5,67)]
+WRITE [(c8,58)]
+BACKUP
+WRITE [(h9,20)(r2,67)(m1,14)]
+BACKUP
+DELETE [c8,x5,o0,n5]
+DELETE [r2,a4]
+BACKUP
+READ [z6]
+WRITE [(w8,18)(s8,42)(e8,35)(m6,84)]

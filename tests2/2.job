@@ -1,0 +1,19 @@
+BACKUP
+WRITE [(o3,37)]
+WRITE [(n9,48)(y0,11)(o9,32)(c3,26)]
+SHOW
+WRITE [(s5,73)(k2,38)(z8,89)(y7,43)]
+DELETE [y7,o3,z8]
+WRITE [(h5,22)(n4,94)(o5,1)]
+READ [c3]
+WRITE [(e0,99)(j2,57)(u5,32)(u8,96)(p1,8)]
+BACKUP
+READ [p1]
+WRITE [(a0,96)]
+READ [y0]
+WRITE [(v4,70)(j5,41)]
+WRITE [(e3,33)(m7,65)(l1,68)]
+WRITE [(p0,64)(y4,13)(w0,1)(b8,95)]
+WRITE [(h8,95)]
+SHOW
+WAIT 3000

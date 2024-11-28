@@ -1,0 +1,10 @@
+WRITE [(x3,30)(t2,35)]
+WRITE [(w1,71)(p7,90)(l8,71)(j8,29)]
+DELETE [p7,l8]
+READ [j8]
+DELETE [w1,j8]
+WRITE [(k2,57)(b6,70)]
+BACKUP
+READ [k2]
+WRITE [(o0,44)(y4,93)(l2,74)(f9,47)(l2,27)]
+WRITE [(o9,91)]

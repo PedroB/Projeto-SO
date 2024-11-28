@@ -1,0 +1,10 @@
+WRITE [(l4,65)(g6,32)(t8,36)(n2,19)]
+SHOW
+READ [l4]
+WRITE [(o7,49)(v0,46)]
+WRITE [(p9,18)(l3,26)]
+READ [l4]
+WRITE [(l2,21)(m2,68)(y3,64)]
+SHOW
+WRITE [(b3,6)(y6,20)]
+READ [l2]

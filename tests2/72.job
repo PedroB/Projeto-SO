@@ -1,0 +1,12 @@
+WAIT 2000
+WRITE [(y1,96)(c6,92)(p2,49)(c3,39)]
+WAIT 2000
+WRITE [(d7,52)(j5,83)(s3,14)]
+WRITE [(u3,16)(j1,22)]
+WRITE [(u7,62)]
+WRITE [(r9,41)]
+WAIT 1000
+WRITE [(a2,27)(u1,9)(w3,17)(o8,34)(t1,93)]
+SHOW
+READ [u1]
+READ [t1]

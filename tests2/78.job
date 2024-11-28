@@ -1,0 +1,14 @@
+WRITE [(x4,11)(x9,65)(a5,89)]
+WRITE [(e8,36)]
+WRITE [(g1,6)]
+WAIT 3000
+READ [e8]
+DELETE [x4,g1]
+WRITE [(a4,61)]
+WRITE [(c3,73)(e3,95)(l6,85)(r9,66)]
+WRITE [(s2,7)(w0,4)(f9,43)]
+WRITE [(f1,57)]
+WRITE [(s3,19)]
+DELETE [s2,e8,s3]
+SHOW
+DELETE [f1,w0,x9]

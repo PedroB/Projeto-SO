@@ -1,0 +1,97 @@
+BACKUP
+WRITE [(f1,54)(m2,26)(p4,45)(j2,17)]
+READ [m2]
+WRITE [(d1,38)(i9,46)(v0,71)(h5,88)(w4,12)]
+WRITE [(r6,85)(g7,57)(h8,88)(w9,32)(p6,62)]
+WRITE [(g5,99)(l2,67)(t2,85)(k1,82)]
+BACKUP
+READ [w4]
+BACKUP
+DELETE [v0]
+WRITE [(x6,39)(l9,63)(t3,13)]
+WRITE [(s3,48)(i8,87)(z1,51)(e0,81)]
+DELETE [g7,z1]
+WRITE [(c1,48)(x2,19)(n4,58)]
+SHOW
+WRITE [(h0,95)(n0,93)(x7,62)]
+WRITE [(i3,2)(v9,22)(g0,95)]
+WRITE [(m9,87)(k7,85)(m3,81)(g3,65)(c0,72)]
+WRITE [(b3,13)(o3,74)(e4,88)(r2,21)(f2,19)]
+READ [s3]
+WRITE [(z2,42)(x4,27)(l0,62)]
+SHOW
+DELETE [g3,e4,s3,w9,x7]
+READ [k7]
+WRITE [(b5,42)(d8,30)(r5,14)]
+WRITE [(e5,5)(o4,89)]
+SHOW
+READ [f2]
+WAIT 1000
+WRITE [(c5,61)(t6,20)(g8,17)(l7,74)]
+DELETE [z2,x2,b5,h5]
+WRITE [(k8,93)(r8,44)]
+WRITE [(j3,71)(s6,4)(b2,98)(g9,65)]
+DELETE [p6,d1,k8,s6]
+DELETE [t3,i8,l7]
+READ [m2]
+WRITE [(r7,40)]
+WRITE [(v7,36)(k9,56)(a4,33)(u6,58)(p0,59)]
+WRITE [(c7,3)]
+WRITE [(g1,91)]
+WRITE [(e3,81)(i2,24)]
+WRITE [(n5,43)(t1,14)(r0,55)(s4,48)]
+WRITE [(v2,18)(y2,0)(x5,81)(h9,71)]
+WRITE [(y1,86)(p2,21)(k2,32)(d2,52)]
+WRITE [(u4,8)(z6,58)]
+DELETE [d8,u4,t6,e0,y1]
+WRITE [(c9,26)]
+DELETE [v2]
+SHOW
+DELETE [g1,c7]
+WRITE [(m5,30)(m1,86)(t3,29)(v6,37)(u1,87)]
+WRITE [(a3,59)(r9,46)(x0,8)(k8,70)]
+WRITE [(q9,92)(w0,61)(q8,64)]
+WRITE [(j7,91)(g3,30)]
+READ [b3]
+WRITE [(s2,10)(c3,60)(q6,44)]
+WRITE [(i7,46)(s5,21)(m7,6)]
+DELETE [o4,m2,x4,r5,c0]
+READ [k2]
+WAIT 3000
+WRITE [(q0,14)(d8,57)(j9,94)(e8,58)]
+WRITE [(e9,98)]
+BACKUP
+WRITE [(z0,10)]
+READ [h9]
+WRITE [(c6,58)]
+WRITE [(m0,46)(s3,55)(k0,87)(a5,75)]
+WRITE [(c2,44)(m6,20)(g4,64)(p3,92)(f7,5)]
+SHOW
+BACKUP
+READ [i7]
+WRITE [(b1,2)]
+WRITE [(a7,73)(l5,84)]
+WAIT 1000
+WRITE [(m8,86)(x3,22)(u8,39)(f4,26)]
+BACKUP
+BACKUP
+READ [r6]
+WRITE [(t0,11)]
+SHOW
+WRITE [(t6,99)]
+WRITE [(u4,17)(s8,86)(e7,14)(d6,89)]
+WRITE [(v5,62)(r4,93)(z4,74)]
+WAIT 1000
+WAIT 1000
+WRITE [(s0,67)]
+READ [p3]
+WRITE [(f5,78)(n3,48)(c8,43)(f5,47)]
+DELETE [h8,v7]
+WRITE [(z7,34)]
+WRITE [(v0,10)(s7,45)(b8,82)(h2,96)(f3,6)]
+WRITE [(d7,3)]
+DELETE [i2]
+DELETE [m5,c9,m6,c3]
+DELETE [f2]
+WRITE [(l6,26)(a9,61)]
+DELETE [c8,m0,v6,e9,g5]

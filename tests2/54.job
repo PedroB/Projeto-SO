@@ -1,0 +1,17 @@
+BACKUP
+WRITE [(o2,21)(p6,35)(r6,64)(r7,40)]
+DELETE [r6,r7,o2]
+READ [p6]
+BACKUP
+READ [p6]
+WRITE [(d8,51)(b8,7)(m5,41)(d2,14)(m5,81)]
+DELETE [b8,m5,d2,d8,p6]
+BACKUP
+WRITE [(d3,71)(l1,70)(i8,23)(s4,70)(b7,27)]
+WRITE [(o8,43)(y6,30)]
+WRITE [(a6,14)(y3,7)]
+WRITE [(s1,83)(k7,80)(v1,28)(y1,86)]
+WRITE [(m4,50)(i5,12)(i4,78)(t1,52)]
+READ [k7]
+WRITE [(r7,82)(m2,29)(w6,57)(e2,11)]
+WRITE [(r3,31)]

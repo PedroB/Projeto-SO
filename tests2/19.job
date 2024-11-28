@@ -1,0 +1,27 @@
+WRITE [(k3,40)(b9,62)]
+SHOW
+WRITE [(r1,71)]
+BACKUP
+WRITE [(a7,73)(x8,97)(v5,47)(i6,91)(m9,11)]
+WRITE [(d3,100)]
+WRITE [(y3,30)]
+WRITE [(q0,20)(e5,46)(n8,83)(a2,65)]
+READ [r1]
+DELETE [r1,y3,x8]
+DELETE [a2]
+WRITE [(r0,24)(q6,62)]
+WRITE [(o4,91)]
+READ [n8]
+WRITE [(e3,9)]
+SHOW
+WRITE [(m2,46)(q4,2)(k6,80)]
+WAIT 2000
+WRITE [(y3,12)(c8,74)]
+WRITE [(c1,75)(r9,100)(b7,9)(m0,22)]
+WRITE [(m1,67)]
+WRITE [(r3,46)(t6,38)(e1,14)(j3,8)]
+WAIT 3000
+READ [r0]
+WRITE [(a0,56)]
+DELETE [e5]
+SHOW

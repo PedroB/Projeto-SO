@@ -1,0 +1,18 @@
+WAIT 3000
+WRITE [(s6,16)(v4,66)]
+SHOW
+BACKUP
+DELETE [v4,s6]
+SHOW
+WRITE [(p9,92)]
+WRITE [(q5,71)(y3,99)]
+WRITE [(v0,76)(b5,32)(x4,1)]
+WRITE [(u2,94)(w5,53)]
+WRITE [(t8,68)(d1,41)(k2,33)]
+DELETE [w5]
+READ [t8]
+WRITE [(a7,41)(w6,31)(q3,48)(i7,50)]
+WRITE [(r6,99)(x1,58)(l2,51)(c7,33)]
+WRITE [(a1,95)(c6,79)]
+READ [b5]
+WRITE [(c2,81)]

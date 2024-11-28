@@ -1,0 +1,18 @@
+WRITE [(d2,12)(m2,20)]
+WRITE [(c9,63)(x4,38)(e6,50)(v7,25)]
+DELETE [m2,d2,x4,v7]
+DELETE [c9]
+DELETE [e6]
+WAIT 2000
+WRITE [(x5,12)(f4,52)(j0,28)(e5,99)(w9,44)]
+READ [x5]
+WRITE [(s4,100)]
+READ [j0]
+WRITE [(q1,58)(h3,96)]
+WRITE [(r7,26)(b1,56)]
+WRITE [(s9,4)(q4,87)]
+WRITE [(d8,27)(d7,46)(c6,12)(c8,43)]
+WRITE [(z6,78)]
+READ [z6]
+SHOW
+WRITE [(h5,100)(f2,51)(k0,16)(t7,53)(k0,14)]

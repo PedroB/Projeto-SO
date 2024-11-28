@@ -1,0 +1,11 @@
+WRITE [(b3,9)(i7,20)(r5,100)(y1,19)]
+WRITE [(v3,4)(y8,8)(v1,40)]
+READ [y1]
+WAIT 1000
+WAIT 2000
+READ [y8]
+WRITE [(m7,32)(q6,19)(x2,64)(l7,18)(k9,91)]
+WRITE [(r6,6)]
+WRITE [(v2,61)(l6,47)]
+SHOW
+READ [r5]

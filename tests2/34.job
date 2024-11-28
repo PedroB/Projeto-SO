@@ -1,0 +1,13 @@
+BACKUP
+BACKUP
+WRITE [(u8,46)(v4,13)(n4,0)(l3,41)(u5,22)]
+SHOW
+SHOW
+READ [u5]
+READ [l3]
+WRITE [(p7,16)(y9,19)(n3,21)(k6,25)(b6,69)]
+WRITE [(t8,10)(j5,63)(q9,66)(x1,54)(n2,68)]
+WRITE [(l4,59)(c3,80)(w8,72)]
+WRITE [(w5,35)(g8,83)]
+READ [c3]
+READ [c3]

@@ -1,0 +1,97 @@
+WRITE [(n3,81)(y9,79)(d9,63)(q6,28)]
+WRITE [(l8,27)]
+WAIT 3000
+WRITE [(y2,81)(r5,34)(p6,47)]
+BACKUP
+DELETE [y2]
+DELETE [y9,l8]
+READ [p6]
+WRITE [(a3,47)(n4,31)(o2,59)(b5,49)(g4,9)]
+READ [q6]
+WRITE [(c8,98)(m0,74)]
+WRITE [(m4,26)(u6,87)(g7,39)(t2,75)(h1,16)]
+DELETE [m0,u6,t2,o2,p6]
+WRITE [(x1,83)]
+WAIT 2000
+READ [g7]
+READ [c8]
+READ [g4]
+WRITE [(a5,85)(f2,22)(s1,20)(h8,7)(i0,62)]
+WRITE [(y2,100)(c6,98)(e5,87)(t8,53)(e7,78)]
+WRITE [(s7,45)(a7,48)(u4,7)(j9,100)(f3,60)]
+WRITE [(m0,15)(q1,81)]
+DELETE [d9,j9]
+WRITE [(p6,86)]
+DELETE [h1]
+READ [n3]
+WAIT 2000
+WAIT 2000
+WRITE [(f1,79)(o9,23)(o1,28)(y5,83)(v4,7)]
+SHOW
+WRITE [(l2,15)(r7,58)(y9,78)(a2,58)(e8,76)]
+BACKUP
+WRITE [(e3,0)]
+WRITE [(e2,67)(x2,39)(k1,81)]
+WRITE [(m5,51)(j4,27)(t2,27)(n1,100)(m5,75)]
+WRITE [(q2,82)]
+WRITE [(p1,39)(p3,21)]
+READ [t8]
+READ [m4]
+DELETE [n1,o1,a2,a7]
+WRITE [(w2,67)(s3,52)]
+WRITE [(w0,21)(s5,80)(j9,77)(e0,99)(l6,93)]
+SHOW
+READ [g7]
+WRITE [(i2,65)(u5,94)(w7,30)]
+WRITE [(y3,95)(j8,58)(k3,79)(s0,99)(k5,67)]
+WRITE [(h5,71)(h7,9)]
+READ [l2]
+WAIT 2000
+WRITE [(l8,38)(n0,24)(v2,30)]
+WRITE [(q5,86)(r8,8)(z8,26)(o1,47)(p7,75)]
+DELETE [m4,q6,a3]
+WRITE [(g5,73)(a6,18)]
+WRITE [(k8,15)(p0,26)(a0,66)(t4,6)]
+READ [y3]
+WRITE [(c3,90)(s8,28)]
+SHOW
+READ [o9]
+DELETE [p0,e5,k1]
+WAIT 1000
+WRITE [(y0,83)(k6,95)(c0,30)(q3,36)(z7,92)]
+DELETE [x1]
+WRITE [(z6,57)(d3,4)]
+READ [n0]
+READ [n0]
+WAIT 1000
+SHOW
+WRITE [(r4,77)(z0,91)]
+SHOW
+READ [s8]
+WRITE [(g1,100)(u7,50)]
+WRITE [(z4,3)(n1,73)]
+WRITE [(p8,91)(i1,68)(d5,97)(b2,52)(h4,58)]
+READ [s5]
+READ [l2]
+WRITE [(b6,39)(j2,24)(o5,90)(n6,35)(f6,59)]
+READ [e2]
+SHOW
+WAIT 3000
+WRITE [(h2,75)(v1,10)(q4,19)(q0,32)]
+WRITE [(l9,70)]
+WRITE [(a4,65)(i7,39)(t5,22)]
+WRITE [(w6,39)(s4,93)(d7,84)(g2,95)(g9,30)]
+BACKUP
+WRITE [(e6,67)]
+WRITE [(k7,6)(b3,10)]
+WRITE [(f4,86)]
+WAIT 1000
+WRITE [(c2,3)]
+WRITE [(w3,54)]
+DELETE [g4,g7,c8,v2]
+WRITE [(d4,60)(s6,99)(n5,63)(t1,7)]
+WRITE [(t0,4)]
+READ [k7]
+WRITE [(k9,99)(b4,15)(p2,7)(c1,45)(y4,91)]
+DELETE [s3,f4,v1,f2]
+READ [p8]

@@ -1,0 +1,21 @@
+SHOW
+BACKUP
+SHOW
+BACKUP
+WRITE [(g9,83)(i1,30)(y3,56)]
+WRITE [(i8,57)(y7,86)(g6,1)(z3,6)(f6,19)]
+WRITE [(t9,60)(k9,90)]
+SHOW
+WRITE [(w7,9)]
+DELETE [w7]
+WRITE [(n9,24)(b3,88)(l2,92)]
+SHOW
+READ [g6]
+WRITE [(t7,25)(e2,11)(h5,54)]
+DELETE [g9,e2,f6,l2,t9]
+WAIT 2000
+WRITE [(t8,27)(d0,9)(z7,30)(e6,50)]
+WAIT 2000
+WRITE [(a8,38)(f2,33)(w1,41)]
+READ [n9]
+BACKUP
