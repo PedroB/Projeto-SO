@@ -18,21 +18,18 @@ struct ThreadArgs {
 };
 
 
-  void *readFilesLines(void *args){ 
-  // struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
-  // int BARRIER = threadArgs->BARRIER_ATIVO;
-  //   int fd = 0;
-  //   if (BARRIER == 0){
-  //     fd = open(threadArgs->file, O_RDONLY);
-  //   }
+  void readFilesLines(void *args){ 
+  struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
+  int BARRIER = threadArgs->BARRIER_ATIVO;
+    int fd = 0;
+    if (BARRIER == 0){
+      fd = open(threadArgs->file, O_RDONLY);
+    }
   
 
   /* replaced by this*/
 
   // int BARRIER = threadArgs->BARRIER_ATIVO;
-    int fd = 0;
-    // if (BARRIER == 0){
-      fd = open(args, O_RDONLY);
 
     /*-------------------*/
 
@@ -49,7 +46,6 @@ struct ThreadArgs {
     fflush(stdout);
     switch (get_next(fd)) {
       case CMD_WRITE:
-      puts("entrouuuuuu write");
         num_pairs = parse_write(fd, keys, values, MAX_WRITE_SIZE, MAX_STRING_SIZE);
         if (num_pairs == 0) {
           fprintf(stderr, "Invalid command. See HELP for usage\n");
@@ -133,15 +129,12 @@ struct ThreadArgs {
         );
 
         break;
-        
-      case CMD_EMPTY:
-        break;
-        
-
+      
       case EOC:
-        kvs_terminate();
-        return 0;
-    
+        return;
+      case CMD_EMPTY:
+      default:
+        break;    
   }
   }
   }
@@ -149,7 +142,7 @@ struct ThreadArgs {
 
 /* whie (readdir)-> genpath(buscar o file da diretoria) (coloca o output do readfileslines num .out)*/
 
-/* directory -> ver o file -> output fica num novo .out*/
+/* directory -> ver o file -> output fica num novo .out
 int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path) {
      if (!dir_name || !entry || !in_path || !out_path) {
         return 1; 
@@ -175,8 +168,58 @@ int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path
 
     return 1;
 }
+*/
 
+int gen_path(char* dir_name, struct dirent* entry, char *in_path, char *out_path) {
+    if (!dir_name || !entry || !in_path || !out_path) {
+        return 1; 
+    }
+    // Check the total length of dir_name and entry->d_name
+    size_t dir_len = strlen(dir_name);
+    size_t file_len = strlen(entry->d_name);
 
+    // Ensure the combined path fits within MAX_JOB_FILE_NAME_SIZE
+    if (dir_len + 1 + file_len + 1 > MAX_JOB_FILE_NAME_SIZE) {
+        fprintf(stderr, "Error: Combined path length exceeds MAX_JOB_FILE_NAME_SIZE.\n");
+        return 1;
+    }
+
+    // Copy directory name to in_path
+    strncpy(in_path, dir_name, MAX_JOB_FILE_NAME_SIZE - 1);
+    in_path[MAX_JOB_FILE_NAME_SIZE - 1] = '\0';  // Ensure null termination
+
+    // Append '/' and entry->d_name
+    strncat(in_path, "/", MAX_JOB_FILE_NAME_SIZE - strlen(in_path) - 1);
+    strncat(in_path, entry->d_name, MAX_JOB_FILE_NAME_SIZE - strlen(in_path) - 1);
+
+  char *ptr_to_dot = strrchr(entry->d_name, '.');
+    if (ptr_to_dot && strcmp(ptr_to_dot, ".job") == 0) {
+        // Create output file path
+        snprintf(out_path, MAX_JOB_FILE_NAME_SIZE, "%s/%.*s.out", 
+                 dir_name, (int)(ptr_to_dot - entry->d_name), entry->d_name);
+
+        // Call readFilesLines and redirect output to .out file
+        int out_fd = open(out_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (out_fd == -1) {
+            perror("Failed to open output file");
+            return 1;
+        }
+
+        // Redirect stdout to the output file
+        int saved_stdout = dup(STDOUT_FILENO);
+        dup2(out_fd, STDOUT_FILENO);
+        close(out_fd);
+
+        // Process the file
+        readFilesLines(in_path);
+
+        // Restore stdout
+        fflush(stdout);
+        dup2(saved_stdout, STDOUT_FILENO);
+        close(saved_stdout);
+    }
+    return 0;
+}
 
   int main(int argc,char *argv[]) {
   struct dirent *entry;
@@ -216,5 +259,7 @@ int gen_path(char* dir_name, struct dirent* entry, char* in_path, char* out_path
   }
 //sdasasdadasda
   closedir(dir);
+  kvs_terminate();
+
   return 0;
 }
